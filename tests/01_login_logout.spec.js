@@ -3,6 +3,8 @@ const login = require ("../Pages/Login")
 const testdata = require ("../testdata.json")
 test.describe.configure({ mode: 'serial' });
 
+// ✅ Tell this test to start with NO stored session
+test.use({ storageState: { cookies: [], origins: [] } });
 
 test ("Login to SalesApp", async function({page})
 {
@@ -18,7 +20,7 @@ test ("Login to SalesApp", async function({page})
   await page.getByRole('button', { name: 'Register now' }).nth(2).click()
 
   // SAVE SESSION AFTER LOGIN
-  await page.context().storageState({ path: 'auth.json' })
+  //await page.context().storageState({ path: 'auth.json' })
   
   
 }
@@ -36,7 +38,7 @@ test ("Logout from SalesApp", async function({page})
   await page.getByRole('button', { name: 'Logout' }).click();
   await Promise.all([
    page.getByRole('button', { name: 'Yes' }).click(),
-   expect(page).toHaveURL("https://xiqonline.com/auth/login/?&redirectURL=https://salesapp.xiqonline.com&navigateTo=/feed")
+   expect(page).toHaveURL("https://xiqonline.com/auth/login/?&redirectURL=https://salesapp.xiqonline.com")
   ])
 }) 
 
