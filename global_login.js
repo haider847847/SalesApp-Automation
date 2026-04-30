@@ -22,7 +22,7 @@ module.exports = async function globalSetup() {
   await loginPage.loginToApplication(testdata.email, testdata.password);
 
   // Dismiss the certification/register popup that appears after login
-  await page.getByRole('button', { name: 'Register now' }).nth(2).click();
+  //await page.getByRole('button', { name: 'Register now' }).nth(2).click();
 
   // Save the authenticated session (cookies + localStorage) to auth.json
   // This file is loaded by all tests via storageState in playwright.config.js
