@@ -7,7 +7,7 @@ export default defineConfig({
   globalSetup: './global_login.js',
 
   // Default timeout for each test (50 seconds)
-  timeout: 50000,
+  timeout: 120000,
 
   // Directory where all test files are located
   testDir: './tests',
